@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ManufacturerController;
 
 // Rotas públicas de autenticação
 Route::group(['prefix' => 'auth'], function () {
@@ -15,5 +16,5 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::post('auth/refresh', [AuthController::class, 'refresh']);
     Route::get('auth/me', [AuthController::class, 'me']);
 
-    // As rotas do CRUD de veículos e gestão de usuários entrarão aqui depois...
+    Route::apiResource('manufacturers', ManufacturerController::class);
 });
